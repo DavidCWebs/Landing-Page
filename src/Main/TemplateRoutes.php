@@ -3,10 +3,11 @@ namespace Carawebs\LandingPage\Main;
 
 class TemplateRoutes {
 
-  public function override_page_template() {
+  public function override_page_template( $page_template ) {
 
     $landing_pages = [
 
+      'services'
 
     ];
 

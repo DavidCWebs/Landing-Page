@@ -78,6 +78,51 @@ class Main {
 
 	}
 
+		/**
+	 * Register_shortcodes
+	 *
+	 * @since		1.0.0
+	 *
+	 */
+	public function register_shortcodes() {
+
+		add_shortcode( 'landing_page', array($this, 'landing_page_markup' ) );
+		//add_shortcode( 'addressCTA', array( $this, 'CTA_shortcode') );
+
+	}
+
+	/**
+	 * Define basic shortcode for the landing page.
+	 *
+	 * Callback function returning address HTML to the `add_shortcode` hook.
+	 *
+	 * @since		1.0.0
+	 * @param  [type] $atts [description]
+	 * @return string Returns the address as a HTML block
+	 */
+	public static function landing_page_markup( ){
+
+		$address = self::get_html();
+
+		return apply_filters( 'carawebs_landing_page_html', $address );
+
+	}
+
+	public static function get_html() {
+
+		ob_start();
+
+		?>
+		<div class="wrapper">
+			<h1>Hello</h1>
+			<h3>Testing...</h3>
+			<hr>
+		</div>
+		<?php
+		echo ob_get_clean();
+
+	}
+
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
