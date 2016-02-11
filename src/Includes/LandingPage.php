@@ -124,9 +124,16 @@ class LandingPage {
 	private function define_public_hooks() {
 
 		$plugin_public = new \Carawebs\LandingPage\Main\Main( $this->get_LandingPage(), $this->get_version() );
+		$template_routes = new \Carawebs\LandingPage\Main\TemplateRoutes();
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+		$this->loader->add_filter( 'template_include', $template_routes, 'override_page_template' );
+
+		//$this->loader->add_filter( 'page_attributes_dropdown_pages_args', $template_routes, 'register_project_templates' );
+		//$this->loader->add_filter( 'wp_insert_post_data', $template_routes, 'register_project_templates' );
+		//$this->loader->add_filter( 'template_include', $template_routes, 'view_project_template' );
 
 	}
 
